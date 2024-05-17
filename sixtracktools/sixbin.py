@@ -101,7 +101,7 @@ def opendir(basedir='.'):
 #  for lbl,obj in head.items():
 #    print "%-8s <%s>"%(lbl, obj)
     npart = head['parttot']
-    for i in range(1, npart/2):
+    for i in range(1, npart//2):
         fn = os.path.join(basedir, 'fort.%d' % (90-i))
         nhead, ndata = open(fn)
     #  for lbl,obj in nhead.items():

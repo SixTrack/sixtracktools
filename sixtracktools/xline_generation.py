@@ -80,7 +80,7 @@ def _expand_struct(sixinput, convert):
             ksl = [0] * nn
             if sign == 1:
                 knl, ksl = ksl, knl
-            elem = Multipole(knl=knl, ksl=ksl, hxl=0, hyl=0, length=0)
+            elem = Multipole(knl=knl, ksl=ksl, hxl=0, length=0)
         elif etype == 11:
             knl, ksl = sixinput.get_knl(nnn, ccc)
             hxl = 0
@@ -93,10 +93,11 @@ def _expand_struct(sixinput, convert):
                 length = d2
                 knl[0] = hxl
             elif d3 == -2:
+                raise ValueError #hyl not supported anymore by xtrack
                 hyl = -d1  # strange sign!!!
                 length = d2
                 ksl[0] = hyl
-            elem = Multipole(knl=knl, ksl=ksl, hxl=hxl, hyl=hyl, length=length)
+            elem = Multipole(knl=knl, ksl=ksl, hxl=hxl, length=length)
         elif etype == 12:
             e0=sixinput.e0
             # Use proton mass from SYNC (pma) instead of that from SIMU (m0c2), as the settings
